@@ -1,506 +1,370 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>铝箔世界 — 铝箔行业知识与资讯平台</title>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --primary:#1a5276;--primary-light:#2980b9;--accent:#e67e22;--accent-hover:#d35400;
-  --bg:#f4f6f8;--card:#fff;--border:#e0e4e8;--text:#2c3e50;--text-light:#7f8c8d;
-  --red:#e74c3c;--green:#27ae60;--table-stripe:#f9fafb;
-  --shadow:0 2px 8px rgba(0,0,0,.08);
-}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
-a{color:var(--primary-light);text-decoration:none}a:hover{text-decoration:underline}
-ul{list-style:none}
-.container{max-width:1200px;margin:0 auto;padding:0 16px}
-
-/* Header */
-header{background:#fff;border-bottom:3px solid var(--accent);padding:16px 0;box-shadow:var(--shadow)}
-header .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.logo{display:flex;align-items:center;gap:12px;font-size:28px;font-weight:700;color:var(--primary);letter-spacing:1px}
-.logo .icon{width:46px;height:46px;background:linear-gradient(135deg,var(--primary-light),var(--accent));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:700}
-.logo-sub{font-size:12px;color:var(--text-light);font-weight:400;display:block;letter-spacing:0}
-.tagline{font-size:13px;color:var(--text-light);text-align:right}
-.tagline strong{color:var(--accent)}
-
-/* Nav */
-nav{background:var(--primary);position:sticky;top:0;z-index:100}
-nav .container{display:flex;gap:0;flex-wrap:wrap}
-nav a{color:#fff;padding:10px 16px;font-size:13px;display:block;transition:.2s;white-space:nowrap}
-nav a:hover,nav a.active{background:var(--accent);text-decoration:none}
-
-/* Hero */
-.hero{background:linear-gradient(135deg,#1a3a5c 0%,#1a5276 50%,#2471a3 100%);padding:32px 0;color:#fff}
-.hero .container{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-.hero h2{font-size:20px;margin-bottom:12px}
-.hero p{font-size:14px;opacity:.85;line-height:1.7}
-.price-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.price-card{background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border-radius:10px;padding:20px;border:1px solid rgba(255,255,255,.15)}
-.price-card .label{font-size:13px;opacity:.8;margin-bottom:4px}
-.price-card .value{font-size:28px;font-weight:700}
-.price-card .change{font-size:13px;margin-top:4px}
-.price-card .meta{font-size:11px;opacity:.6;margin-top:8px}
-.price-up{color:#ff6b6b}.price-down{color:#51cf66}
-
-/* Section */
-.section{padding:28px 0}
-.section-alt{background:#fff}
-.section-title{display:flex;align-items:center;margin-bottom:20px;border-bottom:2px solid var(--accent);padding-bottom:10px}
-.section-title h2{font-size:20px;color:var(--primary);display:flex;align-items:center;gap:10px}
-.section-title h2::before{content:'';width:4px;height:22px;background:var(--accent);border-radius:2px}
-.section-desc{font-size:13px;color:var(--text-light);margin-bottom:20px}
-
-/* Knowledge Grid */
-.know-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.know-card{background:#fff;border-radius:10px;box-shadow:var(--shadow);overflow:hidden;border-top:4px solid var(--primary-light);transition:.2s}
-.know-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
-.know-card:nth-child(2){border-top-color:var(--accent)}
-.know-card:nth-child(3){border-top-color:var(--green)}
-.know-card:nth-child(4){border-top-color:#8e44ad}
-.know-card:nth-child(5){border-top-color:#e74c3c}
-.know-card .kc-header{padding:16px 20px 10px;font-size:17px;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:8px}
-.know-card .kc-body{padding:0 20px 20px}
-.know-card .kc-body li{padding:8px 0;border-bottom:1px dashed var(--border);font-size:13px;cursor:pointer;transition:.15s}
-.know-card .kc-body li:last-child{border-bottom:none}
-.know-card .kc-body li:hover{color:var(--accent);padding-left:6px}
-.know-card .kc-body li::before{content:'📌 ';font-size:11px}
-
-/* News */
-.news-list li{padding:10px 0;border-bottom:1px dashed var(--border);display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.news-list .title{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.news-list .date{color:var(--text-light);font-size:12px;white-space:nowrap}
-.news-list li:hover .title{color:var(--accent)}
-
-/* History Timeline */
-.timeline{position:relative;padding-left:30px}
-.timeline::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:3px;background:var(--primary-light);border-radius:2px}
-.timeline-item{position:relative;margin-bottom:24px}
-.timeline-item::before{content:'';position:absolute;left:-24px;top:6px;width:14px;height:14px;background:var(--accent);border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px var(--primary-light)}
-.timeline-item .year{font-size:15px;font-weight:700;color:var(--primary);margin-bottom:4px}
-.timeline-item .desc{font-size:13px;color:var(--text);line-height:1.7}
-
-/* Supplier Tags */
-.supplier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.supplier-item{background:#fff;border-radius:8px;padding:16px;box-shadow:var(--shadow);border-left:4px solid var(--primary-light);transition:.2s}
-.supplier-item:hover{border-left-color:var(--accent);transform:translateX(3px)}
-.supplier-item .sname{font-size:15px;font-weight:700;color:var(--primary);margin-bottom:4px}
-.supplier-item .sinfo{font-size:12px;color:var(--text-light);line-height:1.6}
-.supplier-item .stag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600;margin-top:6px}
-.tag-listed{background:#eaf2f8;color:var(--primary-light)}
-.tag-private{background:#fef9e7;color:#b7950b}
-
-/* Footer */
-footer{background:#1a252f;color:#8899aa;padding:28px 0 16px;margin-top:30px}
-.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:20px}
-.footer-grid h4{color:#ccd;font-size:14px;margin-bottom:10px}
-.footer-grid a{display:block;color:#8899aa;font-size:12px;padding:3px 0}
-.footer-grid a:hover{color:#fff}
-.footer-bottom{text-align:center;border-top:1px solid #2c3e50;padding-top:14px;font-size:12px;color:#5a6a7a}
-
-/* Responsive */
-@media(max-width:768px){
-  .hero .container{grid-template-columns:1fr}
-  .know-grid{grid-template-columns:1fr}
-  .supplier-grid{grid-template-columns:1fr}
-  .price-cards{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-}
-</style>
+<title>全球铝箔产业门户平台 | Alfoil World</title>
+<meta name="description" content="Alfoil World 铝箔世界连接全球采购商、中国铝箔供应链、行业知识、企业情报与海外询盘入口，打造高端 B2B 铝箔产业门户首页。">
+<link rel="icon" type="image/png" href="assets/images/logo-aw.png">
+<link rel="apple-touch-icon" href="assets/images/logo-aw.png">
+<link rel="stylesheet" href="site-pages.css">
+<script src="site-shell.js" defer></script>
 </head>
-<body>
+<body data-page="home">
 
-<!-- HEADER -->
-<header>
-  <div class="container">
-    <div class="logo">
-      <div class="icon">Al</div>
-      <div>
-        铝箔世界
-        <span class="logo-sub">Alfoil World — 铝箔行业知识与资讯平台</span>
+<div data-site-header></div>
+
+<main id="top">
+  <section class="hero" id="price">
+    <div class="container">
+      <div class="hero-shell">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Global Industry Gateway</div>
+            <h1>全球铝箔产业门户平台</h1>
+            <p>连接全球采购商与中国铝箔供应链，让海外询盘更快找到合适工厂，让优质企业更高效触达国际需求、行业情报与合作机会。</p>
+
+            <div class="hero-badges">
+              <span>Global Buyers Connection</span>
+              <span>Supplier Discovery</span>
+              <span>Battery Foil & Packaging Foil</span>
+              <span>Market Intelligence</span>
+            </div>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="supplier-directory.html">查找供应商</a>
+              <a class="btn btn-secondary" href="ai-search.html">AI智能搜索</a>
+              <a class="btn btn-ghost" href="contact.html">联系我们</a>
+            </div>
+
+            <div class="hero-subactions">
+              <a class="subaction-link" href="global-inquiry.html">海外采购询盘</a>
+              <a class="subaction-link" href="join.html">企业入驻入口</a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>30年+</strong>
+                <span>行业知识沉淀与生产经验整理</span>
+              </div>
+              <div class="metric">
+                <strong>4大</strong>
+                <span>首页核心商业入口直达关键场景</span>
+              </div>
+              <div class="metric">
+                <strong>700万吨</strong>
+                <span>全球铝箔市场规模参考视角</span>
+              </div>
+              <div class="metric">
+                <strong>24h</strong>
+                <span>行情、企业与需求动态持续追踪</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-panel" aria-label="市场快照">
+            <div class="panel-top">
+              <div>
+                <h3>今日市场快照</h3>
+                <p>服务全球采购判断与供应链筛选的实时参考面板。</p>
+              </div>
+              <div class="timestamp">
+                更新时间<br>
+                <strong>2026年4月20日</strong>
+              </div>
+            </div>
+
+            <div class="price-grid">
+              <div class="price-card">
+                <div class="label">长江有色 A00铝</div>
+                <div class="value">19,850</div>
+                <div class="change price-down">▼ 60 (-0.30%)</div>
+                <div class="meta">Spot Market · 元/吨</div>
+              </div>
+              <div class="price-card">
+                <div class="label">沪铝主力合约</div>
+                <div class="value">19,780</div>
+                <div class="change price-down">▼ 45 (-0.23%)</div>
+                <div class="meta">SHFE · 元/吨</div>
+              </div>
+              <div class="price-card">
+                <div class="label">LME铝</div>
+                <div class="value">2,385</div>
+                <div class="change price-up">▲ 12 (+0.51%)</div>
+                <div class="meta">LME · 美元/吨</div>
+              </div>
+              <div class="price-card">
+                <div class="label">南海有色 A00铝</div>
+                <div class="value">19,920</div>
+                <div class="change price-down">▼ 50 (-0.25%)</div>
+                <div class="meta">Nanhai Spot · 元/吨</div>
+              </div>
+            </div>
+
+            <div class="mini-panel">
+              <strong>首页定位</strong>
+              <p>Bloomberg 式产业信息判断 + Alibaba 式供需连接 + Apple 式品牌呈现。</p>
+            </div>
+          </aside>
+        </div>
       </div>
     </div>
-    <div class="tagline">
-      公益开放 · 专业共享 · 助力铝箔行业发展<br>
-      <strong>所有内容免费开放，无需注册</strong>
-    </div>
-  </div>
-</header>
+  </section>
 
-<!-- NAV -->
-<nav>
-  <div class="container">
-    <a href="#price" class="active">铝锭价格</a>
-    <a href="#knowledge">铝箔知识</a>
-    <a href="#news">行业资讯</a>
-    <a href="#history">发展历史</a>
-    <a href="#suppliers">主要企业</a>
-    <a href="#about">关于我们</a>
-  </div>
-</nav>
+  <section class="section" id="gateways">
+    <div class="container section-shell">
+      <div class="section-head">
+        <span class="section-kicker">Core Entry Points</span>
+        <h2>四大核心入口，直接进入商业转化场景</h2>
+        <p>首页不再承载过长内容，而是聚焦国际产业平台最重要的入口能力：找供应商、收询盘、做判断、看市场。</p>
+      </div>
 
-<!-- HERO: ALUMINUM PRICE -->
-<section class="hero" id="price">
-  <div class="container">
-    <div>
-      <h2>📊 今日铝锭价格</h2>
-      <p>数据来源：长江有色金属网、上海期货交易所。每日更新，为您把握铝锭市场脉搏。</p>
-      <br>
-      <p style="font-size:12px;opacity:.6">更新时间：2026年4月20日 | 单位：元/吨</p>
-    </div>
-    <div class="price-cards">
-      <div class="price-card">
-        <div class="label">长江有色 A00铝</div>
-        <div class="value">19,850</div>
-        <div class="change price-down">▼ 60 (-0.30%)</div>
-        <div class="meta">长江有色金属现货市场</div>
-      </div>
-      <div class="price-card">
-        <div class="label">沪铝主力合约</div>
-        <div class="value">19,780</div>
-        <div class="change price-down">▼ 45 (-0.23%)</div>
-        <div class="meta">上海期货交易所</div>
-      </div>
-      <div class="price-card">
-        <div class="label">LME铝（美元/吨）</div>
-        <div class="value">2,385</div>
-        <div class="change price-up">▲ 12 (+0.51%)</div>
-        <div class="meta">伦敦金属交易所</div>
-      </div>
-      <div class="price-card">
-        <div class="label">南海有色 A00铝</div>
-        <div class="value">19,920</div>
-        <div class="change price-down">▼ 50 (-0.25%)</div>
-        <div class="meta">南海有色金属现货市场</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- KNOWLEDGE BASE -->
-<section class="section" id="knowledge">
-  <div class="container">
-    <div class="section-title">
-      <h2>📚 铝箔知识库</h2>
-    </div>
-    <p class="section-desc">涵盖铝箔生产的全流程知识，从原材料到成品应用，由30年铝加工行业经验团队整理。</p>
-
-    <div class="know-grid">
-      <!-- 生产工艺 -->
-      <div class="know-card">
-        <div class="kc-header">🏭 生产工艺</div>
-        <div class="kc-body">
-          <ul>
-            <li><strong>铝箔定义：</strong>厚度在0.2mm以下的铝及铝合金薄板带材，最小工业化生产厚度为0.004mm（4μm）</li>
-            <li><strong>双零箔/单零箔：</strong>厚度0.004\~0.0065mm为双零箔（如4μm、6μm），0.01\~0.1mm为单零箔（如7μm、9μm），0.1\~0.2mm为厚箔</li>
-            <li><strong>热轧毛料：</strong>铸锭→热轧→冷轧→箔轧，组织均匀、力学性能好，适合高端产品</li>
-            <li><strong>铸轧毛料：</strong>铝液直接铸轧成坯→冷轧→箔轧，流程短、成本低；铸轧温度680\~700℃，速度800\~1100mm/min</li>
-            <li><strong>粗轧：</strong>将0.3\~0.5mm的冷轧坯轧至0.05\~0.07mm，压下量大、轧制力高</li>
-            <li><strong>中轧：</strong>将粗轧料继续减薄至0.025\~0.035mm，控制板形和表面质量</li>
-            <li><strong>双合：</strong>两层箔材合在一起轧制，一次轧出两层极薄铝箔，是双零箔生产的标志性工序</li>
-            <li><strong>精轧：</strong>最终减薄至成品厚度（如6μm、7μm），对表面质量和厚度精度要求最高</li>
-            <li><strong>退火：</strong>消除加工硬化、获得所需力学性能（O态或H态），典型退火温度200\~400℃</li>
-            <li><strong>分切：</strong>将宽幅铝箔按客户要求分切成特定宽度，刀具精度直接影响毛刺和端面质量</li>
-            <li><strong>典型轧制参数：</strong>箔轧速度600\~1500m/min，轧制力2000\~6000kN，总压下率可达98%以上</li>
+      <div class="gateway-grid">
+        <article class="gateway-card">
+          <div class="gateway-index">01</div>
+          <h3>全球供应商目录</h3>
+          <p>面向采购商快速筛选铝箔工厂、产能能力、品类方向与国际经验。</p>
+          <ul class="gateway-list">
+            <li>包装箔 / 电池箔 / 药箔 / 空调箔</li>
+            <li>企业概况、产能、出口能力、应用方向</li>
+            <li>适合快速建立供应商 shortlist</li>
           </ul>
-        </div>
-      </div>
+          <a class="card-link" href="supplier-directory.html">进入供应商目录</a>
+        </article>
 
-      <!-- 产品标准 -->
-      <div class="know-card">
-        <div class="kc-header">📋 产品标准</div>
-        <div class="kc-body">
-          <ul>
-            <li><strong>厚度公差-高精级：</strong>厚度≤0.006mm ±8%、0.006\~0.03mm ±6%、0.03\~0.1mm ±5%</li>
-            <li><strong>厚度公差-普通级：</strong>厚度≤0.006mm ±10%、0.006\~0.03mm ±8%、0.03\~0.1mm ±7%</li>
-            <li><strong>针孔数-A级：</strong>厚度≤0.006mm ≤500个/m²、0.006\~0.01mm ≤300个/m²、0.01\~0.03mm ≤50个/m²</li>
-            <li><strong>针孔数-B级：</strong>厚度≤0.006mm ≤1000个/m²、0.006\~0.01mm ≤600个/m²、0.01\~0.03mm ≤100个/m²</li>
-            <li><strong>针孔数-C级：</strong>厚度≤0.006mm ≤3000个/m²、0.006\~0.01mm ≤1000个/m²、0.01\~0.03mm ≤300个/m²</li>
-            <li><strong>常用合金：</strong>1235（纯铝）、8011（包装通用）、8079（高延伸）、8006（高强度）、1060/1100（工业用）、3003（散热器用）</li>
-            <li><strong>Fe/Si比控制：</strong>8011合金Fe含量0.6\~1.0%、Si 0.5\~0.9%，Fe/Si比控制在2.5\~3之间为宜</li>
-            <li><strong>新旧牌号对照：</strong>1070A=L1、1060=L2、1050A=L3、1100=LB2、1200=LG5、8A06=L6</li>
-            <li><strong>状态代号对照：</strong>O=退火态(M)、H12=Y4、H14=Y2、H16=Y1、H18=Y(全硬)</li>
-            <li><strong>检测标准：</strong>GB/T22638系列涵盖铝箔针孔度、表面润湿张力（达因值）、粘附性等检测方法</li>
+        <article class="gateway-card">
+          <div class="gateway-index">02</div>
+          <h3>AI 智能搜索</h3>
+          <p>面向规格、用途、标准和企业能力的智能检索入口，提升买卖双方匹配效率。</p>
+          <ul class="gateway-list">
+            <li>按厚度、合金、用途、认证检索</li>
+            <li>快速跳转知识页与企业页</li>
+            <li>适合复杂询盘的前置判断</li>
           </ul>
-        </div>
-      </div>
+          <a class="card-link" href="ai-search.html">使用 AI 搜索</a>
+        </article>
 
-      <!-- 装备与维护 -->
-      <div class="know-card">
-        <div class="kc-header">🔧 装备与维护</div>
-        <div class="kc-body">
-          <ul>
-            <li><strong>轧机类型：</strong>四辊不可逆轧机为当前铝箔轧制主流，工作辊+支撑辊结构保证刚度和精度</li>
-            <li><strong>国际制造商：</strong>ACHENBACH（德国阿亨巴赫）、SMSD（西马克）、IHI（日本石川岛播磨）为三大主流品牌</li>
-            <li><strong>板形控制：</strong>VIDIMON（阿亨巴赫）、OPTIROLL（西马克）、ABB板形辊，实时测量并自动调节</li>
-            <li><strong>测厚仪：</strong>X射线在线测厚仪，测量精度±0.15%，实现AGC自动厚度控制</li>
-            <li><strong>磨床：</strong>德国HERKULES高精度轧辊磨床，圆度偏差≤1μm，表面粗糙度Ra≤0.02μm</li>
-            <li><strong>退火炉：</strong>温度控制精度±3℃，升温速率可控，冷却速率50℃/h连续可调，避免粘伤</li>
-            <li><strong>过滤系统：</strong>SCHNEIDER施耐德板式过滤器，配合硅藻土助滤，保证轧制油清洁度</li>
-            <li><strong>工作辊：</strong>直接与铝箔接触的轧辊，直径小（230\~280mm），表面光洁度要求极高</li>
-            <li><strong>支撑辊：</strong>支撑工作辊、承受轧制力的大型辊，直径大（500\~700mm），刚度高</li>
-            <li><strong>导辊/展平辊/板形辊：</strong>导辊引导箔材走向，展平辊消除褶皱，板形辊实时检测板形</li>
+        <article class="gateway-card">
+          <div class="gateway-index">03</div>
+          <h3>海外采购询盘中心</h3>
+          <p>把采购需求、产品规格和目标市场快速整理成可对接的询盘入口。</p>
+          <ul class="gateway-list">
+            <li>采购需求收集与规格整理</li>
+            <li>支持出口市场与认证占位说明</li>
+            <li>适合海外买家直接发起合作</li>
           </ul>
-        </div>
-      </div>
+          <a class="card-link" href="global-inquiry.html">提交采购询盘</a>
+        </article>
 
-      <!-- 质量管控 -->
-      <div class="know-card">
-        <div class="kc-header">🔬 质量管控</div>
-        <div class="kc-body">
-          <ul>
-            <li><strong>压折/斜角：</strong>粗中轧道次折痕45°角 → 增加后张力改善展平效果</li>
-            <li><strong>开缝：</strong>中精轧纵向开裂 → 正确设定后张力，避免张力波动</li>
-            <li><strong>线条：</strong>精轧道次出现细线状光泽差异 → 改善润滑油分配和质量</li>
-            <li><strong>色差：</strong>精轧道次光泽不均匀 → 窄料后更换支撑辊，重新磨削</li>
-            <li><strong>起鼓：</strong>中精轧局部凸出不平 → 检查喷液均匀性、降低油温</li>
-            <li><strong>斜纹/人字纹：</strong>润滑不足导致金属流动不均 → 改善润滑、降低压下量</li>
-            <li><strong>振痕：</strong>油膜周期性变化引发振动 → 改变工艺参数避开共振区</li>
-            <li><strong>氧化水斑：</strong>铝箔与水反应生成氧化斑 → 严格控制轧制油含水量≤0.05%</li>
-            <li><strong>起皱：</strong>厚度0.05mm以下张力不足 → 调整展平辊角度和压力</li>
-            <li><strong>辊印：</strong>异物压入箔面形成凹痕 → 确保料头清洁、定期检查辊面</li>
-            <li><strong>裂边：</strong>边部受拉应力过大 → 放松边部张力（负弯调节）</li>
-            <li><strong>串层：</strong>卷取偏离对中线 → 调整展平辊纠偏装置</li>
-            <li><strong>松卷/箭头：</strong>卷取内松外紧产生箭头状突起 → 保证打底张力和质量</li>
-            <li><strong>针孔：</strong>铝箔最常见缺陷，透光可见微孔 → 与毛料冶金质量直接相关，控制铸轧/热轧坯质量</li>
-            <li><strong>达因值：</strong>电池箔表面润湿张力关键指标，一般≥30mN/m，涂碳产品要求≥33mN/m</li>
+        <article class="gateway-card">
+          <div class="gateway-index">04</div>
+          <h3>行业情报与独立页面</h3>
+          <p>长内容迁移到独立页面，首页只保留高价值入口与商业决策所需的精炼信息。</p>
+          <ul class="gateway-list">
+            <li>知识库、资讯、历史、企业页独立承载</li>
+            <li>首页聚焦转化、信任和供需连接</li>
+            <li>更符合国际平台首页逻辑</li>
           </ul>
-        </div>
+          <a class="card-link" href="knowledge.html">查看独立内容页</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="experts">
+    <div class="container section-shell">
+      <div class="section-head">
+        <span class="section-kicker">Expert Endorsement</span>
+        <h2>创始人与产业专家顾问团队</h2>
+        <p>增加真实权威人物展示位，让平台在国际访客面前具备更清晰的专业可信度与顾问委员会形象。</p>
       </div>
 
-      <!-- 应用领域 -->
-      <div class="know-card">
-        <div class="kc-header">🔋 应用领域</div>
-        <div class="kc-body">
-          <ul>
-            <li><strong>食品包装：</strong>铝箔阻隔性最佳，透湿度0\~0.46g/m²·24h，兼具隔光、隔热、隔气功能</li>
-            <li><strong>新能源电池箔：</strong>锂离子电池集流体用铝箔（12μm为主），异物质控制≤50mg/30万m²</li>
-            <li><strong>空调亲水铝箔：</strong>空调散热器核心材料，表面涂覆亲水涂层提高换热效率</li>
-            <li><strong>药用铝箔：</strong>PTP泡罩包装用铝箔（通常0.02\~0.025mm），针孔直径必须≤0.3mm</li>
-            <li><strong>电子电容器：</strong>电解电容器用铝箔，电阻值与合金纯度（Al≥99.93%）密切相关</li>
-            <li><strong>装饰铝箔：</strong>镜面/亚光铝箔，表面亮度L值可达27，用于装饰、标牌等领域</li>
+      <div class="experts-grid">
+        <article class="expert-card">
+          <span class="expert-role">Industry Advisory</span>
+          <h3>樊玉庆</h3>
+          <p class="expert-meta">铝加工专家 / 中国电池箔技术奠基人 / 龙头企业管理者</p>
+          <p>长期深耕铝加工与电池箔技术体系建设，兼具产业技术推动与龙头企业经营管理经验，代表平台核心行业权威背书。</p>
+          <div class="expert-cred">资历：43+ 行业经验，上海铝业专家委员会副主任。</div>
+        </article>
+
+        <article class="expert-card">
+          <span class="expert-role">Trade Advisory</span>
+          <h3>Michael Chen</h3>
+          <p class="expert-meta">国际采购顾问 / Former APAC Sourcing Director</p>
+          <p>负责海外采购路径、供应商筛选逻辑与询盘转化模型顾问，占位用于国际买家信任背书。</p>
+          <div class="expert-cred">资历占位：15+ 年跨境 B2B 采购经验，覆盖欧洲、北美、东南亚市场。</div>
+        </article>
+
+        <article class="expert-card">
+          <span class="expert-role">Application Advisory</span>
+          <h3>李Sarah</h3>
+          <p class="expert-meta">新能源与包装应用顾问 / Battery & Packaging Materials Specialist</p>
+          <p>负责电池箔、药箔、食品包装箔等下游应用场景解读，占位用于强化应用端可信度。</p>
+          <div class="expert-cred">资历占位：10+ 年材料应用与客户开发经验，熟悉认证、合规与终端需求。</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="buyers">
+    <div class="container section-shell">
+      <div class="section-head">
+        <span class="section-kicker">Buyer Conversion</span>
+        <h2>帮助全球采购商更快锁定合适铝箔供应链</h2>
+        <p>用结果导向表达替代泛泛介绍，让国际买家更快理解这个平台能带来什么结果：更快找到工厂、更快判断能力、更快发起合作。</p>
+      </div>
+
+      <div class="buyers-layout">
+        <div class="buyers-main">
+          <article class="buyers-card">
+            <h3>更快完成供应商初筛</h3>
+            <p>围绕产品品类、规格、国际市场和企业能力进行第一轮有效筛选。</p>
+            <ul class="buyers-list">
+              <li>按产品方向快速缩小范围</li>
+              <li>避免无效询盘和重复沟通</li>
+              <li>让 shortlist 更接近成交机会</li>
+            </ul>
+          </article>
+
+          <article class="buyers-card">
+            <h3>更快识别制造能力</h3>
+            <p>结合工艺、设备、良率、出口经验等角度帮助采购判断供应链成熟度。</p>
+            <ul class="buyers-list">
+              <li>规格与能力匹配逻辑更清晰</li>
+              <li>兼顾技术端与采购端语言</li>
+              <li>支持复杂询盘前置判断</li>
+            </ul>
+          </article>
+
+          <article class="buyers-card">
+            <h3>更快进入对接流程</h3>
+            <p>把采购需求整理为更可执行的询盘信息，提高沟通效率与响应质量。</p>
+            <ul class="buyers-list">
+              <li>目标市场与认证需求更明确</li>
+              <li>适合样品、试单、长期采购场景</li>
+              <li>让询盘更接近真实采购动作</li>
+            </ul>
+          </article>
+
+          <article class="buyers-card">
+            <h3>独立内容页辅助决策</h3>
+            <p>首页聚焦转化，知识库、资讯、历史和企业动态全部迁移至独立页面按需查看。</p>
+            <ul class="buyers-list">
+              <li>减少首页冗长负担</li>
+              <li>提升商业首页节奏与高级感</li>
+              <li>兼顾内容深度与转化效率</li>
+            </ul>
+          </article>
+        </div>
+
+        <aside class="buyers-panel">
+          <h3>采购商快速通道</h3>
+          <p>适合海外品牌商、贸易商、分销商与终端制造企业快速发起合作意向。</p>
+          <ul class="buyers-steps">
+            <li>01 提交规格需求：厚度、合金、用途、认证、目标市场。</li>
+            <li>02 平台匹配路径：按应用与能力推荐更合适的供应商方向。</li>
+            <li>03 进入深度沟通：样品、打样、审核、试单与长期合作。</li>
           </ul>
+          <div class="buyers-actions" style="margin-top: 18px;">
+            <a class="btn btn-secondary" href="global-inquiry.html">海外采购询盘</a>
+            <a class="btn btn-primary" href="buyer-desk.html">进入采购商专区</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="why-us">
+    <div class="container section-shell">
+      <div class="section-head">
+        <span class="section-kicker">Why Choose Us</span>
+        <h2>为什么全球客户选择我们</h2>
+        <p>不是简单堆积内容，而是把产业知识、供应商发现、采购转化和品牌展示整合成更有效的 B2B 平台首页。</p>
+      </div>
+
+      <div class="reasons-grid">
+        <div class="reasons-stack">
+          <article class="reason-card">
+            <h3>供需连接更直接</h3>
+            <p>首页所有 CTA 都指向明确场景页，占位结构更适合后续承接询盘、企业入驻和内容转化。</p>
+            <ul class="reason-list">
+              <li>所有核心动作都有独立目标链接</li>
+              <li>从首页直达询盘、入驻、搜索、目录</li>
+            </ul>
+          </article>
+
+          <article class="reason-card">
+            <h3>首页信息更精炼</h3>
+            <p>长内容已迁移到独立页面入口，保留首页高级感与高转化逻辑，不再被长列表拖慢节奏。</p>
+            <ul class="reason-list">
+              <li>知识、资讯、历史、企业页独立承载</li>
+              <li>首页控制在 5 屏内更适合国际平台</li>
+            </ul>
+          </article>
+
+          <article class="reason-card">
+            <h3>国际平台表达更清晰</h3>
+            <p>整体采用深色高端基调，结合数据面板、顾问背书、入口卡片和结果导向文案提升信任感。</p>
+            <ul class="reason-list">
+              <li>更像产业龙头平台而不是普通资讯站</li>
+              <li>适合对外展示和后续商业化扩展</li>
+            </ul>
+          </article>
+
+          <article class="reason-card">
+            <h3>后续扩展更容易</h3>
+            <p>当前已把首页改造成“入口页”，后续只需补独立页面即可形成完整网站矩阵。</p>
+            <ul class="reason-list">
+              <li>supplier-directory.html</li>
+              <li>ai-search.html / knowledge.html / news.html 等</li>
+            </ul>
+          </article>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- NEWS -->
-<section class="section section-alt" id="news">
-  <div class="container">
-    <div class="section-title">
-      <h2>📰 行业资讯</h2>
+        <article class="reason-card highlight">
+          <h3>独立内容页入口</h3>
+          <p>首页现在只保留最值钱的部分，其余深内容改为独立页面入口，更符合商业首页逻辑。</p>
+          <div class="quick-links">
+            <a class="quick-link" href="knowledge.html">
+              <strong>知识库</strong>
+              <span>生产工艺、标准、应用、质量控制</span>
+            </a>
+            <a class="quick-link" href="news.html">
+              <strong>行业资讯</strong>
+              <span>企业动态、政策变化、市场趋势</span>
+            </a>
+            <a class="quick-link" href="history.html">
+              <strong>发展历史</strong>
+              <span>全球与中国铝箔产业演进脉络</span>
+            </a>
+            <a class="quick-link" href="company-radar.html">
+              <strong>企业动态</strong>
+              <span>主要供应商观察与企业展示入口</span>
+            </a>
+            <a class="quick-link" href="global-inquiry.html">
+              <strong>采购询盘</strong>
+              <span>海外买家提交需求与合作意向</span>
+            </a>
+            <a class="quick-link" href="join.html">
+              <strong>企业入驻</strong>
+              <span>品牌展示、目录入驻、合作申请</span>
+            </a>
+          </div>
+          <div class="contact-actions" style="margin-top: 22px;">
+            <a class="btn btn-secondary" href="contact.html">联系商务团队</a>
+            <a class="btn btn-primary" href="join.html">申请企业入驻</a>
+          </div>
+        </article>
+      </div>
     </div>
-    <p class="section-desc">铝箔行业动态、政策解读、主要供应商资讯，持续更新。</p>
+  </section>
+</main>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-      <!-- 最新资讯 -->
-      <div>
-        <h3 style="font-size:15px;color:var(--primary);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)">最新动态</h3>
-        <ul class="news-list">
-          <li><span class="title">鼎胜新材2025年报：净利润增长显著，新能源铝箔占比持续提升</span><span class="date">04-18</span></li>
-          <li><span class="title">南山铝业高端铝箔项目投产，年产能增加5万吨</span><span class="date">04-17</span></li>
-          <li><span class="title">常铝股份发布一季度业绩预告，超预期</span><span class="date">04-16</span></li>
-          <li><span class="title">华北铝业完成技术改造，双零箔良品率提升至92%</span><span class="date">04-15</span></li>
-          <li><span class="title">2026年Q1中国铝箔出口量同比增长8.3%</span><span class="date">04-14</span></li>
-        </ul>
-      </div>
-
-      <!-- 政策与市场 -->
-      <div>
-        <h3 style="font-size:15px;color:var(--primary);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)">政策与市场</h3>
-        <ul class="news-list">
-          <li><span class="title">工信部发布铝加工行业绿色工厂评价标准</span><span class="date">04-17</span></li>
-          <li><span class="title">欧盟碳边境税（CBAM）对铝箔出口影响分析</span><span class="date">04-15</span></li>
-          <li><span class="title">新能源汽车补贴延续，电池铝箔需求持续旺盛</span><span class="date">04-13</span></li>
-          <li><span class="title">铝锭价格走势：供需平衡，短期震荡为主</span><span class="date">04-12</span></li>
-          <li><span class="title">《铝行业碳达峰实施方案》细则落地解读</span><span class="date">04-10</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HISTORY -->
-<section class="section" id="history">
-  <div class="container">
-    <div class="section-title">
-      <h2>📖 铝箔行业发展史</h2>
-    </div>
-    <p class="section-desc">从1910年第一条铝箔轧机诞生，到如今全球700万吨市场规模，百年铝箔产业的演进之路。</p>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px">
-      <!-- 全球 -->
-      <div>
-        <h3 style="font-size:16px;color:var(--primary);margin-bottom:16px">🌍 全球铝箔发展</h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="year">1891年</div>
-            <div class="desc">美国和欧洲手工作坊采用多层锤击法生产小张箔，铝箔生产萌芽</div>
-          </div>
-          <div class="timeline-item">
-            <div class="year">1903年</div>
-            <div class="desc">法国A.Gautschi用二辊轧机平张叠轧法轧得厚0.05mm铝箔</div>
-          </div>
-          <div class="timeline-item">
-            <div class="year">1910年</div>
-            <div class="desc">瑞士R.V.Neher与德国August Schmitz合作，成功轧出成卷窄幅铝箔，铝箔进入工业化生产</div>
-          </div>
-          <div class="timeline-item">
-            <div class="year">1950-70年代</div>
-            <div class="desc">冷轧+箔轧工艺成熟，双零箔（厚度＜0.0065mm）实现量产</div>
-          </div>
-          <div class="timeline-item">
-            <div class="year">2000年后</div>
-            <div class="desc">全球铝箔产能向中国转移，中国成为最大铝箔生产国</div>
-          </div>
-          <div class="timeline-item">
-            <div class="year">2020年代</div>
-            <div class="desc">新能源电池箔需求爆发，铝箔进入高端化、功能化新阶段，全球产量约700万吨</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 中国 -->
-      <div>
-        <h3 style="font-size:16px;color:var(--primary);margin-bottom:16px">🇨🇳 中国铝箔产业</h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="year">1932年</div>
-            <div class="desc">瑞士铝Alussise、加铝Alcan、英国铝British Aluminium合资在上海建华铝钢精厂，中国铝箔工业起步</div>
-          </div>
-          <div class="timeline-item">
-            <div class="year">1958-1963年</div>
-            <div class="desc">成都715厂、东轻厂装备国产二辊轧机；1959年西北铝从德国进口铝箔轧机</div>
-          </div>
-          <div class="timeline-item">
-            <div class="year">1979年</div>
-            <div class="desc">东轻厂从Achenbach引进四辊不可逆万能轧机，铝箔生产开始进入现代化</div>
-          </div>
-          <div class="timeline-item">
-            <div class="year">1983年</div>
-            <div class="desc">华北铝引进4台日本神户铝箔轧机及生产技术know-how，奠定中国现代化铝箔生产技术基础</div>
-          </div>
-          <div class="timeline-item">
-            <div class="year">1990年代</div>
-            <div class="desc">厦顺、大亚、渤海、上海闵行、西南铝等一大批现代化铝箔厂建成，中国进入世界铝箔强国行列，产量从1.5万吨增至24万吨</div>
-          </div>
-          <div class="timeline-item">
-            <div class="year">2000年至今</div>
-            <div class="desc">两米级2000m/min高速铝箔轧机集中投产，中国铝箔装备和产能进入绝对世界第一，铝箔大量出口</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SUPPLIERS -->
-<section class="section section-alt" id="suppliers">
-  <div class="container">
-    <div class="section-title">
-      <h2>🏢 主要供应商动态</h2>
-    </div>
-    <p class="section-desc">中国铝箔行业主要企业概况，持续跟踪产能、技术、市场动态。</p>
-
-    <div class="supplier-grid">
-      <div class="supplier-item">
-        <div class="sname">鼎胜新材</div>
-        <div class="sinfo">全球铝箔龙头，电池箔产能领先。2025年产量超80万吨，新能源铝箔占比35%+</div>
-        <span class="stag tag-listed">A股上市 603876</span>
-      </div>
-      <div class="supplier-item">
-        <div class="sname">南山铝业</div>
-        <div class="sinfo">山东龙口，全产业链布局（氧化铝→电解铝→铝加工），高端铝箔重点发力</div>
-        <span class="stag tag-listed">A股上市 600219</span>
-      </div>
-      <div class="supplier-item">
-        <div class="sname">常铝股份</div>
-        <div class="sinfo">江苏常熟，空调箔细分龙头，近年向电池箔、汽车铝材转型</div>
-        <span class="stag tag-listed">A股上市 002160</span>
-      </div>
-      <div class="supplier-item">
-        <div class="sname">华北铝业</div>
-        <div class="sinfo">河北涿州，中国铝箔工业的摇篮，技术底蕴深厚，双零箔优势明显</div>
-        <span class="stag tag-private">未上市</span>
-      </div>
-      <div class="supplier-item">
-        <div class="sname">杭州五星铝业</div>
-        <div class="sinfo">鼎胜新材控股子公司，专注铝箔生产加工，技术实力强</div>
-        <span class="stag tag-listed">控股子公司</span>
-      </div>
-      <div class="supplier-item">
-        <div class="sname">厦顺铝箔</div>
-        <div class="sinfo">福建厦门，高端铝箔专业生产商，产品出口欧美日韩</div>
-        <span class="stag tag-private">未上市</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="container">
-    <div class="section-title">
-      <h2>ℹ️ 关于铝箔世界</h2>
-    </div>
-    <div style="background:#fff;border-radius:10px;padding:24px;box-shadow:var(--shadow)">
-      <p style="font-size:15px;line-height:2;margin-bottom:16px">
-        <strong>铝箔世界（Alfoil World）</strong>是一个<strong>公益性质</strong>的铝箔行业知识与资讯平台。
-      </p>
-      <p style="line-height:2;margin-bottom:12px">
-        我们的初心：<strong>打破铝箔行业的信息壁垒，让专业知识触手可及。</strong>
-      </p>
-      <ul style="line-height:2.2;font-size:14px">
-        <li>✅ 所有内容<strong>免费开放</strong>，无需注册、无需付费</li>
-        <li>✅ 铝箔知识由<strong>30年铝加工行业经验</strong>的专家团队整理</li>
-        <li>✅ 行业资讯每日更新，主要供应商动态持续跟踪</li>
-        <li>✅ 铝锭价格数据来源权威，每日更新</li>
-      </ul>
-      <br>
-      <p style="font-size:13px;color:var(--text-light);line-height:2">
-        如果您是铝箔行业的从业者、研究人员、投资者或学生，希望这个平台能为您提供有价值的参考。<br>
-        也欢迎行业同仁提供内容建议和资料补充，共同建设铝箔行业的知识社区。
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4>铝箔世界</h4>
-        <a href="#knowledge">铝箔知识库</a>
-        <a href="#news">行业资讯</a>
-        <a href="#history">发展历史</a>
-        <a href="#suppliers">主要企业</a>
-      </div>
-      <div>
-        <h4>知识分类</h4>
-        <a href="#knowledge">生产工艺</a>
-        <a href="#knowledge">产品标准</a>
-        <a href="#knowledge">装备维护</a>
-        <a href="#knowledge">质量管控</a>
-        <a href="#knowledge">应用领域</a>
-      </div>
-      <div>
-        <h4>关于我们</h4>
-        <a href="#about">平台介绍</a>
-        <a href="mailto:contact@alfoilworld.com">联系我们</a>
-        <a href="#">内容合作</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      © 2026 铝箔世界 Alfoil World · 公益开放 · 专业共享<br>
-      本站内容仅供参考，不构成投资建议
-    </div>
-  </div>
-</footer>
+<div data-site-footer></div>
 
 </body>
 </html>
+
+
+
