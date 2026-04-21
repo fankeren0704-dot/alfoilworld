@@ -1,19 +1,163 @@
 const pageNavMap = {
   home: ["home"],
+  "home-en": ["home"],
   knowledge: ["knowledge"],
   history: ["knowledge"],
-  "ai-search": ["knowledge", "ai"],
+  "ai-search": ["ai"],
   news: ["news"],
   "company-radar": ["radar"],
   "supplier-directory": ["suppliers"],
   "buyer-desk": ["buyers"],
-  "global-inquiry": ["buyers", "inquiry"],
+  "global-inquiry": ["inquiry"],
   join: ["join"],
   contact: ["contact"],
   about: ["contact"]
 };
 
-const headerMarkup = `
+const pageFileMap = {
+  home: { zh: "index.html", en: "index-en.html" },
+  about: { zh: "about.html", en: "about-en.html" },
+  "ai-search": { zh: "ai-search.html", en: "ai-search-en.html" },
+  "buyer-desk": { zh: "buyer-desk.html", en: "buyer-desk-en.html" },
+  "company-radar": { zh: "company-radar.html", en: "company-radar-en.html" },
+  contact: { zh: "contact.html", en: "contact-en.html" },
+  "global-inquiry": { zh: "global-inquiry.html", en: "global-inquiry-en.html" },
+  history: { zh: "history.html", en: "history-en.html" },
+  join: { zh: "join.html", en: "join-en.html" },
+  knowledge: { zh: "knowledge.html", en: "knowledge-en.html" },
+  news: { zh: "news.html", en: "news-en.html" },
+  "supplier-directory": { zh: "supplier-directory.html", en: "supplier-directory-en.html" }
+};
+
+const shellCopy = {
+  zh: {
+    utility: {
+      advisory: "专家顾问",
+      buyers: "全球采购",
+      contact: "联系我们"
+    },
+    nav: {
+      home: "首页",
+      suppliers: "供应商目录",
+      knowledge: "知识库",
+      news: "行业资讯",
+      radar: "企业情报",
+      buyers: "全球采购",
+      join: "企业入驻",
+      inquiry: "采购询盘",
+      ai: "AI 搜索"
+    },
+    drawer: {
+      contact: "联系我们",
+      buyerDesk: "采购商专区",
+      close: "关闭"
+    },
+    footer: {
+      introTitle: "铝箔世界 Alfoil World",
+      introText:
+        "面向全球采购商、品牌方与供应链团队的铝箔产业门户，提供供应商发现、行业知识、市场洞察与询盘引导。",
+      platform: "平台入口",
+      content: "内容中心",
+      connect: "联系合作",
+      suppliers: "供应商目录",
+      ai: "AI 搜索",
+      inquiry: "提交询盘",
+      join: "企业入驻",
+      knowledge: "知识库",
+      insights: "行业资讯",
+      history: "产业历史",
+      radar: "企业情报",
+      buyers: "全球采购",
+      contact: "联系我们",
+      about: "关于平台",
+      bottom:
+        "© 2026 铝箔世界 Alfoil World · GitHub Pages 静态展示站原型，可继续扩展双语页面与内容矩阵。"
+    },
+    toggleOpen: "打开导航",
+    toggleClose: "关闭导航",
+    brandTitle: "铝箔世界",
+    brandSubLeft: "ALFOIL",
+    brandSubRight: "WORLD"
+  },
+  en: {
+    utility: {
+      advisory: "Advisory Board",
+      buyers: "Global Buyers",
+      contact: "Contact"
+    },
+    nav: {
+      home: "Home",
+      suppliers: "Suppliers",
+      knowledge: "Knowledge Base",
+      news: "Insights",
+      radar: "Company Radar",
+      buyers: "Global Buyers",
+      join: "Join",
+      inquiry: "Inquiry",
+      ai: "AI Search"
+    },
+    drawer: {
+      contact: "Contact Us",
+      buyerDesk: "Buyer Desk",
+      close: "Close"
+    },
+    footer: {
+      introTitle: "Alfoil World",
+      introText:
+        "A global aluminum foil intelligence platform helping international buyers, sourcing teams, and brand-side decision makers move from market understanding to supplier discovery and inquiry action.",
+      platform: "Platform",
+      content: "Content",
+      connect: "Contact",
+      suppliers: "Supplier Directory",
+      ai: "AI Search",
+      inquiry: "Submit Inquiry",
+      join: "Join as Supplier",
+      knowledge: "Knowledge Base",
+      insights: "Insights",
+      history: "Industry History",
+      radar: "Company Radar",
+      buyers: "Global Buyers",
+      contact: "Contact Us",
+      about: "About",
+      bottom:
+        "© 2026 Alfoil World · Static GitHub Pages prototype for supplier discovery, sourcing guidance, and aluminum foil market intelligence."
+    },
+    toggleOpen: "Open navigation",
+    toggleClose: "Close navigation",
+    brandTitle: "ALFOIL WORLD",
+    brandSubLeft: "GLOBAL ALUMINUM FOIL",
+    brandSubRight: "INTELLIGENCE"
+  }
+};
+
+function resolvePageKey(page) {
+  if (page === "home-en") {
+    return "home";
+  }
+  return page;
+}
+
+function localizedHref(page, locale) {
+  const key = resolvePageKey(page);
+  const record = pageFileMap[key];
+  if (!record) {
+    return locale === "zh" ? "index.html" : "index-en.html";
+  }
+  return record[locale] || record.en;
+}
+
+function getHeaderMarkup(locale, page) {
+  const copy = shellCopy[locale] || shellCopy.en;
+  const homeHref = localizedHref("home", locale);
+  const langSwitch = `
+        <div class="lang-switch" aria-label="Language switch">
+          <a href="${localizedHref(page, "zh")}" class="${locale === "zh" ? "active" : ""}">CN</a>
+          <span>|</span>
+          <a href="${localizedHref(page, "en")}" class="${locale === "en" ? "active" : ""}">EN</a>
+        </div>
+      `;
+
+  return `
   <header class="site-header">
     <div class="utility-bar">
       <div class="container">
@@ -22,25 +166,25 @@ const headerMarkup = `
           <span class="status-pill"><strong>B2B</strong> Global Supply & Demand Connection</span>
         </div>
         <div class="utility-right">
-          <a class="utility-link" href="index.html#experts" data-nav-key="experts">专家顾问</a>
-          <a class="utility-link" href="buyer-desk.html" data-nav-key="buyers">Global Buyers</a>
-          <a class="utility-link" href="contact.html" data-nav-key="contact">Contact Desk</a>
+          <a class="utility-link" href="${homeHref}#experts" data-nav-key="experts">${copy.utility.advisory}</a>
+          <a class="utility-link" href="${localizedHref("buyer-desk", locale)}" data-nav-key="buyers">${copy.utility.buyers}</a>
+          <a class="utility-link" href="${localizedHref("contact", locale)}" data-nav-key="contact">${copy.utility.contact}</a>
         </div>
       </div>
     </div>
 
     <div class="container header-main">
       <div class="header-branding">
-        <a class="brand" href="index.html" aria-label="Alfoil World">
+        <a class="brand" href="${homeHref}" aria-label="Alfoil World">
           <div class="brand-mark" aria-hidden="true">
             <img src="assets/images/logo-aw.png" alt="" loading="eager" decoding="async">
           </div>
           <div class="brand-copy">
-            <strong>铝箔世界</strong>
-            <span><em>ALFOIL</em> <i>WORLD</i></span>
+            <strong>${copy.brandTitle}</strong>
+            <span><em>${copy.brandSubLeft}</em> <i>${copy.brandSubRight}</i></span>
           </div>
         </a>
-        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="打开导航">
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-label="${copy.toggleOpen}">
           <span></span>
           <span></span>
           <span></span>
@@ -54,86 +198,95 @@ const headerMarkup = `
               <img src="assets/images/logo-aw.png" alt="" loading="eager" decoding="async">
             </div>
             <div class="drawer-title">
-              <strong>铝箔世界</strong>
-              <span><em>ALFOIL</em> <i>WORLD</i></span>
+              <strong>${copy.brandTitle}</strong>
+              <span><em>${copy.brandSubLeft}</em> <i>${copy.brandSubRight}</i></span>
             </div>
           </div>
-          <button class="drawer-close" type="button" data-nav-close aria-label="关闭导航">关闭</button>
+          <button class="drawer-close" type="button" data-nav-close aria-label="${copy.toggleClose}">${copy.drawer.close}</button>
         </div>
         <nav class="main-nav">
-          <a href="index.html" data-nav-key="home">首页</a>
-          <a href="supplier-directory.html" data-nav-key="suppliers">供应商目录</a>
-          <a href="knowledge.html" data-nav-key="knowledge">知识库</a>
-          <a href="news.html" data-nav-key="news">行业资讯</a>
-          <a href="company-radar.html" data-nav-key="radar">企业情报</a>
-          <a href="buyer-desk.html" data-nav-key="buyers">全球采购</a>
+          <a href="${localizedHref("home", locale)}" data-nav-key="home">${copy.nav.home}</a>
+          <a href="${localizedHref("supplier-directory", locale)}" data-nav-key="suppliers">${copy.nav.suppliers}</a>
+          <a href="${localizedHref("knowledge", locale)}" data-nav-key="knowledge">${copy.nav.knowledge}</a>
+          <a href="${localizedHref("news", locale)}" data-nav-key="news">${copy.nav.news}</a>
+          <a href="${localizedHref("company-radar", locale)}" data-nav-key="radar">${copy.nav.radar}</a>
+          <a href="${localizedHref("buyer-desk", locale)}" data-nav-key="buyers">${copy.nav.buyers}</a>
         </nav>
 
         <div class="nav-actions">
-          <a class="nav-link-btn" href="join.html" data-nav-key="join">企业入驻</a>
-          <a class="nav-cta alt" href="global-inquiry.html" data-nav-key="inquiry">海外采购询盘</a>
-          <a class="nav-cta" href="ai-search.html" data-nav-key="ai">AI智能搜索</a>
+          <a class="nav-link-btn" href="${localizedHref("join", locale)}" data-nav-key="join">${copy.nav.join}</a>
+          <a class="nav-cta alt" href="${localizedHref("global-inquiry", locale)}" data-nav-key="inquiry">${copy.nav.inquiry}</a>
+          <a class="nav-cta" href="${localizedHref("ai-search", locale)}" data-nav-key="ai">${copy.nav.ai}</a>
         </div>
 
+        ${langSwitch}
+
         <div class="drawer-meta">
-          <a href="contact.html">联系商务团队</a>
-          <a href="buyer-desk.html">进入全球采购商专区</a>
+          <a href="${localizedHref("contact", locale)}">${copy.drawer.contact}</a>
+          <a href="${localizedHref("buyer-desk", locale)}">${copy.drawer.buyerDesk}</a>
         </div>
       </div>
     </div>
     <button class="nav-backdrop" type="button" data-nav-backdrop tabindex="-1" aria-hidden="true"></button>
   </header>
 `;
+}
 
-const footerMarkup = `
+function getFooterMarkup(locale) {
+  const copy = shellCopy[locale] || shellCopy.en;
+
+  return `
   <footer>
     <div class="container">
       <div class="footer-grid footer-grid-wide">
         <div class="footer-column footer-intro">
-          <h4>Alfoil World</h4>
-          <p>面向全球供需连接的铝箔产业门户平台，服务采购、品牌、供应链、研究与国际市场拓展。</p>
+          <h4>${copy.footer.introTitle}</h4>
+          <p>${copy.footer.introText}</p>
         </div>
         <div class="footer-column">
-          <h4>平台入口</h4>
-          <a href="supplier-directory.html">供应商目录</a>
-          <a href="ai-search.html">AI 智能搜索</a>
-          <a href="global-inquiry.html">海外采购询盘</a>
-          <a href="join.html">企业入驻</a>
+          <h4>${copy.footer.platform}</h4>
+          <a href="${localizedHref("supplier-directory", locale)}">${copy.footer.suppliers}</a>
+          <a href="${localizedHref("ai-search", locale)}">${copy.footer.ai}</a>
+          <a href="${localizedHref("global-inquiry", locale)}">${copy.footer.inquiry}</a>
+          <a href="${localizedHref("join", locale)}">${copy.footer.join}</a>
         </div>
         <div class="footer-column">
-          <h4>内容中心</h4>
-          <a href="knowledge.html">知识库</a>
-          <a href="news.html">行业资讯</a>
-          <a href="history.html">发展历史</a>
-          <a href="company-radar.html">企业情报</a>
+          <h4>${copy.footer.content}</h4>
+          <a href="${localizedHref("knowledge", locale)}">${copy.footer.knowledge}</a>
+          <a href="${localizedHref("news", locale)}">${copy.footer.insights}</a>
+          <a href="${localizedHref("history", locale)}">${copy.footer.history}</a>
+          <a href="${localizedHref("company-radar", locale)}">${copy.footer.radar}</a>
         </div>
         <div class="footer-column">
-          <h4>联系与合作</h4>
-          <a href="buyer-desk.html">全球采购商专区</a>
-          <a href="contact.html">联系我们</a>
-          <a href="about.html">平台介绍</a>
+          <h4>${copy.footer.connect}</h4>
+          <a href="${localizedHref("buyer-desk", locale)}">${copy.footer.buyers}</a>
+          <a href="${localizedHref("contact", locale)}">${copy.footer.contact}</a>
+          <a href="${localizedHref("about", locale)}">${copy.footer.about}</a>
           <a href="mailto:contact@alfoilworld.com">contact@alfoilworld.com</a>
         </div>
       </div>
       <div class="footer-bottom">
-        © 2026 铝箔世界 Alfoil World · GitHub Pages 多页面静态站点结构已统一，可继续扩展目录、表单和内容矩阵。
+        ${copy.footer.bottom}
       </div>
     </div>
   </footer>
 `;
+}
 
 function mountSiteShell() {
   const headerSlot = document.querySelector("[data-site-header]");
   const footerSlot = document.querySelector("[data-site-footer]");
   const page = document.body.dataset.page || "home";
+  const locale = document.body.dataset.locale || (page === "home" ? "zh" : "en");
+  const copy = shellCopy[locale] || shellCopy.en;
   const activeKeys = pageNavMap[page] || [];
 
   if (headerSlot) {
-    headerSlot.outerHTML = headerMarkup;
+    headerSlot.outerHTML = getHeaderMarkup(locale, page);
   }
 
   if (footerSlot) {
-    footerSlot.outerHTML = footerMarkup;
+    footerSlot.outerHTML = getFooterMarkup(locale);
   }
 
   activeKeys.forEach((key) => {
@@ -156,7 +309,7 @@ function mountSiteShell() {
     siteHeader.classList.toggle("is-open", isOpen);
     document.body.classList.toggle("menu-open", isOpen);
     navToggle.setAttribute("aria-expanded", String(isOpen));
-    navToggle.setAttribute("aria-label", isOpen ? "关闭导航" : "打开导航");
+    navToggle.setAttribute("aria-label", isOpen ? copy.toggleClose : copy.toggleOpen);
   };
 
   if (navToggle) {

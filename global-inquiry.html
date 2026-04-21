@@ -1,17 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>海外采购询盘 | 铝箔采购表单与需求提交 | Alfoil World</title>
-<meta name="description" content="提交包装箔、电池箔、药箔、空调箔等采购需求，清晰整理规格、认证、交期、贸易和样品要求。">
+<title>采购询盘 | 铝箔需求整理与提交 | Alfoil World</title>
+<meta name="description" content="把铝箔采购需求整理成更清晰的询盘包，涵盖规格、市场要求、认证、试单规模和交付信息，帮助提升首轮沟通效率。">
 <link rel="icon" type="image/png" href="assets/images/logo-aw.png">
 <link rel="apple-touch-icon" href="assets/images/logo-aw.png">
 <link rel="stylesheet" href="site-pages.css">
 <script src="site-shell.js" defer></script>
 <script src="inquiry-form.js" defer></script>
 </head>
-<body data-page="global-inquiry">
+<body data-page="global-inquiry" data-locale="zh">
 <div data-site-header></div>
 
 <main>
@@ -20,22 +20,22 @@
       <div class="hero-shell">
         <div class="hero-grid">
           <div>
-            <div class="eyebrow">Global Inquiry Desk</div>
-            <h1>提交一份更容易被工厂快速响应的海外采购询盘</h1>
-            <p>把规格、认证、交期、贸易条款和样品要求一次性整理清楚，帮助平台更快匹配合适的铝箔供应商，并减少跨时区反复确认成本。</p>
+            <div class="eyebrow">采购询盘</div>
+            <h1>把采购需求整理成更容易被工厂快速理解的询盘包</h1>
+            <p>本页面帮助你把规格、应用要求、认证、试单计划和交付信息整理成更清晰的询盘摘要，便于平台做供应方向判断并减少前期来回确认成本。</p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#inquiry-form">填写采购表单</a>
-              <a class="btn btn-secondary" href="supplier-directory.html">先查看供应商目录</a>
+              <a class="btn btn-primary" href="#inquiry-form">填写表单</a>
+              <a class="btn btn-secondary" href="supplier-directory.html">查看供应商目录</a>
             </div>
           </div>
           <aside class="hero-side">
-            <h3>提交前建议准备</h3>
+            <h3>建议先准备这些信息</h3>
             <ul>
-              <li>产品类型、合金、状态、厚度、宽度和目标用途。</li>
-              <li>目标市场、认证要求、样品需求与首次试单规模。</li>
-              <li>交付城市、港口、贸易术语与预期合作周期。</li>
+              <li>用途、合金、状态、厚度、宽度和关键性能要求</li>
+              <li>目标市场、认证要求、样品计划与年度采购规模</li>
+              <li>目的港、贸易术语以及偏好的供应商类型</li>
             </ul>
-            <p class="mini-note">移动端已优化为单列填写体验，核心字段更适合单手录入和快速提交。</p>
+            <p class="mini-note">当前页面仍为静态前端逻辑，保留校验与邮件草稿能力，不引入服务端提交。</p>
           </aside>
         </div>
       </div>
@@ -45,25 +45,25 @@
   <section class="section">
     <div class="container section-shell">
       <div class="section-head">
-        <span class="section-kicker">How It Works</span>
-        <h2>平台如何处理你的采购需求</h2>
-        <p>我们把询盘承接拆成 3 个更适合国际采购节奏的步骤，帮助你尽快进入样品、报价与 shortlist 阶段。</p>
+        <span class="section-kicker">处理流程</span>
+        <h2>平台如何帮助你推进询盘</h2>
+        <p>目标是减少反复确认、提高首次沟通质量，并帮助你更快进入样品和报价阶段。</p>
       </div>
       <div class="process-grid">
         <article class="process-step">
           <span class="step-no">01</span>
-          <strong>明确规格与合规条件</strong>
-          <p>先把合金、厚度、公差、认证、用途、出口市场和包装要求整理成统一需求包，减少沟通损耗。</p>
+          <strong>明确规格与市场要求</strong>
+          <p>先把应用方向、尺寸、质量重点、目标市场和认证条件整理清楚。</p>
         </article>
         <article class="process-step">
           <span class="step-no">02</span>
-          <strong>匹配供应商与生产能力</strong>
-          <p>根据品类方向、出口经验、量产能力与国际客户结构建立候选名单，筛掉不匹配工厂。</p>
+          <strong>匹配供应方向与能力</strong>
+          <p>结合应用方向、制造强项与出口画像，缩小更可能匹配的供应商范围。</p>
         </article>
         <article class="process-step">
           <span class="step-no">03</span>
           <strong>进入打样、报价与跟进</strong>
-          <p>通过平台商务协同完成样品要求、报价周期、MOQ、交期和下一步沟通安排的确认。</p>
+          <p>用更清楚的需求摘要支持后续样品沟通、报价安排和进一步商务推进。</p>
         </article>
       </div>
     </div>
@@ -74,30 +74,30 @@
       <div class="form-layout">
         <div class="form-panel">
           <div class="panel-head">
-            <span class="panel-kicker">Procurement Form</span>
-            <h2>海外采购询盘表单</h2>
-            <p>带 <span class="required-mark">*</span> 的字段为必填。你提交后，页面会先做前端校验，再生成更适合发送给商务团队的询盘动作。</p>
+            <span class="panel-kicker">询盘表单</span>
+            <h2>全球铝箔采购询盘表单</h2>
+            <p>带 <span class="required-mark">*</span> 的字段为必填。页面会先做前端校验，再生成更适合发送给平台团队的邮件草稿。</p>
           </div>
 
           <form id="inquiry-form-element" class="page-shell" novalidate>
             <div class="field-set">
-              <h3>采购方基本信息</h3>
+              <h3>采购方信息</h3>
               <div class="field-grid-2">
                 <div class="field" data-field>
                   <label for="company">公司名称<span class="required-mark">*</span></label>
-                  <input id="company" name="company" type="text" autocomplete="organization" required data-label="公司名称" placeholder="Company / Buyer Name">
-                  <span class="field-help">建议填写采购主体或品牌名称，便于后续建档。</span>
+                  <input id="company" name="company" type="text" autocomplete="organization" required data-label="公司名称" placeholder="公司或采购主体名称">
+                  <span class="field-help">建议填写实际采购主体或品牌名称，便于后续识别与建档。</span>
                   <span class="field-error"></span>
                 </div>
                 <div class="field" data-field>
-                  <label for="website">官网或品牌链接</label>
-                  <input id="website" name="website" type="url" inputmode="url" autocomplete="url" data-label="官网或品牌链接" placeholder="https://">
-                  <span class="field-help">可选，但有助于平台更快理解你的业务背景。</span>
+                  <label for="website">官网</label>
+                  <input id="website" name="website" type="url" inputmode="url" autocomplete="url" data-label="官网" placeholder="https://yourcompany.com">
+                  <span class="field-help">可选，但有助于平台理解你的业务背景。</span>
                   <span class="field-error"></span>
                 </div>
                 <div class="field" data-field>
                   <label for="contact-name">联系人<span class="required-mark">*</span></label>
-                  <input id="contact-name" name="contact_name" type="text" autocomplete="name" required data-label="联系人" placeholder="Your Name">
+                  <input id="contact-name" name="contact_name" type="text" autocomplete="name" required data-label="联系人" placeholder="你的姓名">
                   <span class="field-error"></span>
                 </div>
                 <div class="field" data-field>
@@ -106,9 +106,9 @@
                   <span class="field-error"></span>
                 </div>
                 <div class="field" data-field>
-                  <label for="phone">WhatsApp / WeChat</label>
-                  <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" data-label="WhatsApp / WeChat" placeholder="+1 202 555 0188 / WeChat ID">
-                  <span class="field-help">可选，便于跨时区快速联系与样品沟通。</span>
+                  <label for="phone">WhatsApp / 微信</label>
+                  <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" data-label="WhatsApp / 微信" placeholder="+86 / +1 / 微信号">
+                  <span class="field-help">可选，便于跨时区更快沟通。</span>
                   <span class="field-error"></span>
                 </div>
               </div>
@@ -142,17 +142,17 @@
                 </div>
                 <div class="field" data-field>
                   <label for="thickness">厚度<span class="required-mark">*</span></label>
-                  <input id="thickness" name="thickness" type="text" inputmode="decimal" required data-label="厚度" placeholder="例如 6μm / 12μm / 20μm">
+                  <input id="thickness" name="thickness" type="text" inputmode="decimal" required data-label="厚度" placeholder="例如 6um / 12um / 20um">
                   <span class="field-error"></span>
                 </div>
                 <div class="field" data-field>
                   <label for="width">宽度</label>
-                  <input id="width" name="width" type="text" inputmode="decimal" data-label="宽度" placeholder="例如 260mm / 500mm">
+                  <input id="width" name="width" type="text" inputmode="decimal" data-label="宽度" placeholder="例如 260 mm / 500 mm">
                   <span class="field-error"></span>
                 </div>
                 <div class="field" data-field>
                   <label for="surface">表面与附加要求</label>
-                  <input id="surface" name="surface" type="text" data-label="表面与附加要求" placeholder="亲水、涂层、达因值、针孔要求等">
+                  <input id="surface" name="surface" type="text" data-label="表面与附加要求" placeholder="涂层、表面张力、针孔、洁净度等">
                   <span class="field-error"></span>
                 </div>
               </div>
@@ -163,12 +163,12 @@
               <div class="field-grid-3">
                 <div class="field" data-field>
                   <label for="market">目标市场<span class="required-mark">*</span></label>
-                  <input id="market" name="market" type="text" required data-label="目标市场" placeholder="Europe / North America / Middle East">
+                  <input id="market" name="market" type="text" required data-label="目标市场" placeholder="欧洲 / 北美 / 中东 / 东南亚">
                   <span class="field-error"></span>
                 </div>
                 <div class="field" data-field>
                   <label for="certification">认证要求</label>
-                  <input id="certification" name="certification" type="text" data-label="认证要求" placeholder="ISO / FDA / SGS / RoHS / Reach">
+                  <input id="certification" name="certification" type="text" data-label="认证要求" placeholder="ISO / FDA / SGS / REACH">
                   <span class="field-error"></span>
                 </div>
                 <div class="field" data-field>
@@ -185,32 +185,32 @@
                 </div>
                 <div class="field" data-field>
                   <label for="volume">采购规模<span class="required-mark">*</span></label>
-                  <input id="volume" name="volume" type="text" inputmode="text" required data-label="采购规模" placeholder="Trial order 2 tons / Annual volume 120 tons">
+                  <input id="volume" name="volume" type="text" required data-label="采购规模" placeholder="试单 2 吨 / 年度需求 120 吨">
                   <span class="field-error"></span>
                 </div>
                 <div class="field" data-field>
                   <label for="delivery">交付周期</label>
-                  <input id="delivery" name="delivery" type="text" data-label="交付周期" placeholder="例如 3 weeks / 45 days">
+                  <input id="delivery" name="delivery" type="text" data-label="交付周期" placeholder="例如 3 周 / 45 天">
                   <span class="field-error"></span>
                 </div>
                 <div class="field" data-field>
-                  <label for="destination">目的港 / 城市</label>
-                  <input id="destination" name="destination" type="text" data-label="目的港 / 城市" placeholder="Delivery Port / Final Destination">
+                  <label for="destination">目的港 / 目的地</label>
+                  <input id="destination" name="destination" type="text" data-label="目的港 / 目的地" placeholder="最终目的港或城市">
                   <span class="field-error"></span>
                 </div>
               </div>
             </div>
 
             <div class="field-set">
-              <h3>你更偏好的供应商类型</h3>
-              <p class="hint">这部分不是必须，但能帮助平台更快做筛选。</p>
+              <h3>偏好的供应商类型</h3>
+              <p class="hint">这部分不是必填，但有助于平台更快判断 shortlist 方向。</p>
               <div class="checkbox-grid">
                 <label class="checkbox-chip"><input type="checkbox" name="supplier_preference" value="上市公司"> 上市公司</label>
                 <label class="checkbox-chip"><input type="checkbox" name="supplier_preference" value="出口欧美经验"> 出口欧美经验</label>
-                <label class="checkbox-chip"><input type="checkbox" name="supplier_preference" value="电池箔重点厂商"> 电池箔重点厂商</label>
+                <label class="checkbox-chip"><input type="checkbox" name="supplier_preference" value="电池箔重点企业"> 电池箔重点企业</label>
                 <label class="checkbox-chip"><input type="checkbox" name="supplier_preference" value="高端包装与药箔"> 高端包装与药箔</label>
-                <label class="checkbox-chip"><input type="checkbox" name="supplier_preference" value="可接受中等 MOQ"> 可接受中等 MOQ</label>
-                <label class="checkbox-chip"><input type="checkbox" name="supplier_preference" value="可支持打样与试单"> 可支持打样与试单</label>
+                <label class="checkbox-chip"><input type="checkbox" name="supplier_preference" value="灵活 MOQ"> 灵活 MOQ</label>
+                <label class="checkbox-chip"><input type="checkbox" name="supplier_preference" value="支持打样与试单"> 支持打样与试单</label>
               </div>
             </div>
 
@@ -218,8 +218,8 @@
               <h3>补充说明</h3>
               <div class="field-full" data-field>
                 <label for="message">询盘说明<span class="required-mark">*</span></label>
-                <textarea id="message" name="message" required data-label="询盘说明" placeholder="请尽量写清性能要求、应用场景、目标供应商画像、竞品参考、价格区间或已遇到的采购问题。"></textarea>
-                <span class="field-help">建议至少写明目标产品、规格重点、目标市场和试单预期。</span>
+                <textarea id="message" name="message" required data-label="询盘说明" placeholder="请说明产品用途、关键性能要求、希望寻找的供应商画像、价格区间或当前遇到的采购问题。"></textarea>
+                <span class="field-help">建议至少写明目标产品、核心规格、目标市场和试单或年度采购预期。</span>
                 <span class="field-error"></span>
               </div>
             </div>
@@ -227,45 +227,45 @@
             <div id="form-status" class="form-status" aria-live="polite"></div>
 
             <div class="submit-row">
-              <button id="inquiry-submit" class="btn btn-primary" type="submit">提交采购询盘</button>
-              <a class="btn btn-secondary" href="contact.html">联系商务顾问</a>
-              <a class="btn btn-ghost" href="supplier-directory.html">先建立候选名单</a>
+              <button id="inquiry-submit" class="btn btn-primary" type="submit">提交询盘</button>
+              <a class="btn btn-secondary" href="contact.html">联系我们</a>
+              <a class="btn btn-ghost" href="supplier-directory.html">先看供应商目录</a>
             </div>
           </form>
 
           <div class="form-note">
-            你也可以把已有 RFQ、规格书、样品清单或内部采购表通过邮件发送给平台商务团队，便于后续快速建档。
+            如果你已经有 RFQ、规格书、样品清单或内部采购模板，也可以直接通过邮件发送给平台团队。
           </div>
         </div>
 
         <aside class="side-stack">
           <div class="side-panel">
             <div class="panel-head">
-              <span class="panel-kicker">Checklist</span>
-              <h3>高质量询盘清单</h3>
+              <span class="panel-kicker">检查清单</span>
+              <h3>怎样的询盘更容易得到高质量响应</h3>
             </div>
             <ul>
-              <li>明确产品大类和应用场景。<span>包装箔、电池箔、药箔等方向会决定匹配路径。</span></li>
-              <li>给出至少 3 个关键规格。<span>厚度、宽度、合金、状态、表面要求越清楚越好。</span></li>
-              <li>交代认证与市场约束。<span>出口市场、测试标准、合规边界会影响可选工厂范围。</span></li>
-              <li>说明试单量和长期规模。<span>有助于判断更适合大型龙头还是灵活型加工厂。</span></li>
+              <li>先明确应用场景。<span>包装、电池、药箔和工业箔会对应不同的供应方向。</span></li>
+              <li>至少给出 3 个关键规格。<span>厚度、宽度、合金、状态和表面要求越清楚越好。</span></li>
+              <li>说明目标市场和认证要求。<span>这些会直接影响可选工厂范围。</span></li>
+              <li>说明试单和长期规模。<span>有助于判断更适合大厂还是更灵活的加工型企业。</span></li>
             </ul>
           </div>
 
           <div class="priority-card">
             <strong>24h</strong>
-            <p>工作日内的初步响应占位承诺。GitHub Pages 静态环境下会先完成前端校验与询盘整理。</p>
+            <p>用于展示首轮响应预期的占位说明。当前版本仍以静态前端整理逻辑为主。</p>
           </div>
 
           <div class="side-panel">
             <div class="panel-head">
-              <span class="panel-kicker">Next Step</span>
-              <h3>提交后你会得到什么</h3>
+              <span class="panel-kicker">提交后</span>
+              <h3>你会得到什么</h3>
             </div>
             <div class="signal-list">
-              <li>需求摘要回看<span>把你填写的需求整理为便于内部确认的摘要结构。</span></li>
-              <li>初步匹配建议<span>根据应用方向和采购规模给出供应商画像建议。</span></li>
-              <li>后续协同入口<span>可以继续跳转到目录、知识库和联系页深化沟通。</span></li>
+              <li>需求摘要<span>把你填写的需求整理成更适合内部和对外确认的结构。</span></li>
+              <li>供应方向判断<span>基于应用与能力线索给出更适合的供应商画像方向。</span></li>
+              <li>后续动作入口<span>可以继续进入目录、知识库和联系页面做进一步推进。</span></li>
             </div>
           </div>
         </aside>
@@ -277,8 +277,8 @@
     <div class="container">
       <div class="cta-strip">
         <div>
-          <h3>还不确定应该找哪类供应商？</h3>
-          <p>先通过知识库和供应商目录建立 shortlist，再回到询盘页提交会更高效。</p>
+          <h3>还没准备好直接联系供应商？</h3>
+          <p>建议先通过知识库和供应商目录建立更清晰的判断，再回到本页提交结构化询盘。</p>
         </div>
         <div class="cta-row">
           <a class="btn btn-primary" href="knowledge.html">先看知识库</a>
@@ -292,5 +292,3 @@
 <div data-site-footer></div>
 </body>
 </html>
-
-
